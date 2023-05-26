@@ -1,7 +1,9 @@
 # 23-1002-Tapestry
 
+Will be updated once tapestries are automatically generated. 
+
 ## Project Description
-Brief Description of project here
+Our goal with Tapestry ML is to use machine learning to automatically generate a web of interconnected content in Tapestry Tool. 
 
 ## Branch Description
 Brief Description of project here
@@ -12,7 +14,7 @@ Brief Description of project here
 - [Name of asset and link if applicable](https://www.google.com)
 
 ## Versioning
-- Version of Project
+- Currently working on Tapestry 3.0 
 
 ## Getting Started
 
@@ -34,17 +36,18 @@ Brief Description of project here
 ## Team
 
 ### Faculty:
-List of PIs here
+Dr. Steven Barnes, Associate Professor of Teaching, Department of Psychology
 
 ### Current EML Student Team:
 
-- Name of Member - Developer/Lead
-- Name of Member - Developer
-- Name of Member - Designer
+- Victoria Lim -  Lead and UI/UX Designer
+- Sophia Yang - Developer
+- Jung Yi Cau - Designer
+- Grace Bell - Volunteer 
 
 ## Troubleshooting
 - List any common 'gotcha's with the project here
 
 ## Documentation
-- [Project Wiki Link Here](https://www.google.com)
+- [Project Wiki Link Here](https://wiki.ubc.ca/Documentation:23-3002_Tapestry_Tool_ML)
 - [Link to other forms of doc here](https://www.google.com)
