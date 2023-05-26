@@ -3,7 +3,7 @@ import json
 
 #OpenAI API Endpoint and Key
 api_endpoint = 'https://api.openai.com/v1/chat/completions'
-api_key = 'Bearer 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' 
+api_key = 'Bearer OPENAI-API-KEY' 
 
 #Tapestry API Endpoint
 node_generating_api_endpoint = "http://localhost/wordpress/wp-json/tapestry-tool/v1/tapestries/5/nodes"
