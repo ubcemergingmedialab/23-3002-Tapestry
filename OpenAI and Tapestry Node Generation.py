@@ -1,11 +1,13 @@
 import requests
 import json
+import math
 
 i = 0
+angle = 0
 
 #OpenAI API Endpoint and Key
 api_endpoint = 'https://api.openai.com/v1/chat/completions'
-api_key = 'Bearer OPENAI-API-KEY' 
+api_key = 'Bearer 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' 
 
 #Tapestry API Endpoint
 node_generating_api_endpoint = "http://localhost/wordpress/wp-json/tapestry-tool/v1/tapestries/5/nodes"
@@ -31,11 +33,38 @@ new_text_content = openai_json['choices'][0]['message']['content']
 
 splitted_text = new_text_content.split("/")
 
+# This is for the node positioning
+increments = len(splitted_text)
+
+# This is for the node positioning
+response_tapestry = requests.get(tapestry_api_endpoint, verify=False)
+json_data = response_tapestry.json()
+
+# This is the parent ID for the root node - figure out how to automatically get this later
+parent_id_filler = 4
+
+# Get the x and y coordinates of the root node
+x_root_node_position = json_data['nodes'][f'{parent_id_filler}']['coordinates']['x']
+y_root_node_position = json_data['nodes'][f'{parent_id_filler}']['coordinates']['y']
+
 #Tapestry API - Generating nodes with text
 for text in splitted_text:
+    # Node positioning code 
+    radius = 600
+    angle_increments = (2 * math.pi) / increments # first_layer_nodes.length
+    x = x_root_node_position + radius * math.cos(angle)
+    y = y_root_node_position + radius * math.sin(angle)
+
+    angle += angle_increments
+
     node = {
-        "title": text,
-        'status': 'publish'
+        'title': text,
+        'status': 'publish',
+        # Sets the x y coordinates of the node on the screen (if you don't specify, x: 3000 and y: 3000 are default)
+        'coordinates': {
+        'x': x,
+        'y': y,
+      },
     }
 
     request_body = {
@@ -70,6 +99,9 @@ for text in splitted_text:
     else:
         print('Error:', response_tapestry.status_code)
 
+
+
+# Child Node Generating
 for node_id in node_ids:
     cn_headers = {
         'Authorization': api_key,
@@ -93,9 +125,13 @@ for node_id in node_ids:
         cn_request_body = {
             "node": {
                 "title": cn_text,
-                'status': 'publish'
+                'status': 'publish',
+                'coordinates': {
+                    'x': 200,
+                    'y': 200,
+                },
             }, 
-            "parentId": node_id
+            "parentId": node_id  #Parentid is child node id
         }
 
         cn_json_node_data = json.dumps(cn_request_body)
@@ -108,5 +144,5 @@ for node_id in node_ids:
         else:
             print('Error:', response_tapestry_child_nodes.status_code)
             print(response_tapestry_child_nodes.content)
-
-    i += 1 
+        
+    i += 1
