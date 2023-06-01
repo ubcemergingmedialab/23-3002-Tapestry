@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+p {
+    font-style: italic;
+  }
+
+.rectangle0 
+{
+position: absolute;
+left: 216px;
+top: 447px;
+background-color:#66a7be;
+height:249px;
+width:249px;
+border-radius:20px;
+}
+
+.rectangle1
+{
+    position: absolute;
+    width: 249px;
+    height: 249px;
+    left: 595px;
+    top: 447px;
+    
+    /* Tapestry Blue Shades/TB 70 */
+    
+    background: #66A7BE;
+    border-radius: 20px;
+}
+
+.rectangle2
+{
+    position: absolute;
+    width: 249px;
+    height: 249px;
+    left: 974px;
+    top: 447px;
+    
+    /* Tapestry Blue Shades/TB 70 */
+    
+    background: #66A7BE;
+    border-radius: 20px;
+}
+
+.container f,
+.container g,
+.container h { 
+position: absolute;
+height: 29px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+color: #FFFFFF;
+}
+
+.container f {
+left: 217px;
+top: 603px;
+width: 252px;
+}
+
+.container g {
+left: 623px;
+top: 603px;
+width: 194px;
+}
+
+.container h{
+width:197px;
+height:29px;
+left: 1007px;
+top:603px;
+}
+
+
