@@ -4,6 +4,48 @@ p {
     font-style: italic;
   }
 
+ h0 {
+
+position: absolute;
+width: 328px;
+height: 56px;
+left: 156px;
+top: 68px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 48px;
+
+color: #000000;
+
+opacity: 0.7;
+ } 
+
+h1 {
+    /* What do you want to generate your tapestry from? */
+
+
+position: absolute;
+width: 1244px;
+height: 56px;
+left: 121px;
+top: 255px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 58px;
+
+/* Tapestry Blue */
+
+color: #1DADE1;
+
+opacity: 0.7;
+}
+
 .rectangle0 
 {
 position: absolute;
@@ -43,6 +85,20 @@ border-radius:20px;
     border-radius: 20px;
 }
 
+.border 
+{
+    position: absolute;
+    width: 709px;
+    height: 300px;
+    left: 187px;
+    top: 421px;
+
+    /* Tapestry Blue Shades/TB 50 */
+
+    border: 6px dashed #99C4D3;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
 .container f,
 .container g,
 .container h { 
@@ -75,5 +131,99 @@ height:29px;
 left: 1007px;
 top:603px;
 }
+
+p1 {
+position: absolute;
+width: 1011px;
+height: 48px;
+left: 40px;
+top: 355px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+
+color: #006C92;
+}
+
+p2 {
+    
+    position: absolute;
+    width: 1011px;
+    height: 24px;
+    left: 40px;
+    top: 379px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #006C92;
+    }
+
+.back-button {
+
+    position: absolute;
+    width: 186px;
+    height: 55px;
+    left: 501px;
+    top: 835px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    /* Tapestry Blue Shades/TB 50 */
+
+    background: #99C4D3;
+    border-radius: 10px;
+}
+
+.back-button:hover {
+    background-color: #66A7BE;
+  }
+
+ .next-button {
+    position: absolute;
+    width: 186px;
+    height: 55px;
+    left: 720px;
+    top: 835px;
+    background: #99C4D3;
+    border-radius: 10px;
+    border: none;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #FFFFFF;
+ } 
+
+ .next-button:hover {
+    background-color: #66A7BE;
+  }
+  /* 
+  .svg-container {
+    position: absolute;
+    width: 76px;
+    height: 81.31px;
+    left: 50px;
+    top: 46px;
+  } */
 
 
