@@ -4,6 +4,7 @@ import math
 
 i = 0
 angle = 0
+cn_angle = 0
 
 #OpenAI API Endpoint and Key
 api_endpoint = 'https://api.openai.com/v1/chat/completions'
@@ -51,7 +52,7 @@ y_root_node_position = json_data['nodes'][f'{parent_id_filler}']['coordinates'][
 for text in splitted_text:
     # Node positioning code 
     radius = 600
-    angle_increments = (2 * math.pi) / increments # first_layer_nodes.length
+    angle_increments = (2 * math.pi) / increments
     x = x_root_node_position + radius * math.cos(angle)
     y = y_root_node_position + radius * math.sin(angle)
 
@@ -100,9 +101,9 @@ for text in splitted_text:
         print('Error:', response_tapestry.status_code)
 
 
-
 # Child Node Generating
 for node_id in node_ids:
+
     cn_headers = {
         'Authorization': api_key,
         'Content-Type': 'application/json'
@@ -122,13 +123,27 @@ for node_id in node_ids:
     cn_splitted_text = cn_new_text_content.split("/")
         
     for cn_text in cn_splitted_text:
+
+        # Position coordinates for child nodes (to make grandchildren off of)
+        x_child_node_position = json_data['nodes'][f'{node_id}']['coordinates']['x']
+        y_child_node_position = json_data['nodes'][f'{node_id}']['coordinates']['y']
+        print(f"x_child_node_position: {x_child_node_position}")
+        print(f"y_child_node_position: {y_child_node_position}")
+
+        cn_radius = 500
+        cn_angle_increments = (2 * math.pi) / (len(cn_splitted_text) + 1) # Added one to account for the child node taking up space
+        x_cn = x_child_node_position + cn_radius * math.cos(cn_angle)
+        y_cn = y_child_node_position + cn_radius * math.sin(cn_angle)
+
+        cn_angle += cn_angle_increments
+
         cn_request_body = {
             "node": {
                 "title": cn_text,
                 'status': 'publish',
                 'coordinates': {
-                    'x': 200,
-                    'y': 200,
+                    'x': x_cn,
+                    'y': y_cn,
                 },
             }, 
             "parentId": node_id  #Parentid is child node id
