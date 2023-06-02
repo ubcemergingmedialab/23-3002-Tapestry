@@ -51,7 +51,7 @@ y_root_node_position = json_data['nodes'][f'{parent_id_filler}']['coordinates'][
 #Tapestry API - Generating nodes with text
 for text in splitted_text:
     # Node positioning code 
-    radius = 600
+    radius = 850
     angle_increments = (2 * math.pi) / increments
     x = x_root_node_position + radius * math.cos(angle)
     y = y_root_node_position + radius * math.sin(angle)
@@ -130,7 +130,7 @@ for node_id in node_ids:
         print(f"x_child_node_position: {x_child_node_position}")
         print(f"y_child_node_position: {y_child_node_position}")
 
-        cn_radius = 500
+        cn_radius = 320
         cn_angle_increments = (2 * math.pi) / (len(cn_splitted_text) + 1) # Added one to account for the child node taking up space
         x_cn = x_child_node_position + cn_radius * math.cos(cn_angle)
         y_cn = y_child_node_position + cn_radius * math.sin(cn_angle)
