@@ -1,0 +1,50 @@
+[data-theme="dark"] {
+    --bg-color-primary: #262626;
+    --bg-color-secondary: #444;
+    --bg-color-layered: #ffffff08;
+    --text-color-primary: #eee;
+    --text-color-secondary: #ccc;
+    --text-color-tertiary: #a9a9a9;
+    --button-color: #ddd;
+}
+
+[data-theme="light"] {
+    --bg-color-primary: #eee;
+    --bg-color-secondary: #ddd;
+    --bg-color-layered: #00000008;
+    --text-color-primary: #111;
+    --text-color-secondary: #262626;
+    --text-color-tertiary: #5f747f;
+    --button-color: #222;
+}
+
+[data-theme] {
+    --highlight-color: #11a6d8;
+}
+
+/* This is for styling the field where users will input text */
+.prompt-text-field {
+    z-index: 0;
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border: none;
+    height: 70px;
+    width: 700px;
+    border-radius: 15px;
+    /* box-shadow: 400px 100px 7px black; /* Horizontal and vertical, shadow blur, shadow color*/
+}
+
+.prompt-submit-button {
+    z-index: 1; /* This z-index will put the button on top of the text field */
+    position: absolute;
+    clip-path: polygon(0 41%, 0 0, 100% 50%, 0 100%, 0 60%, 59% 51%); /* Envelope arrow shape created with Clip Path Maker */
+    background-color: black;
+    width: 30px;
+    height: 30px;
+}
+
+.prompt-submit-button:hover {
+    transition: 0.3s;
+    background-color: #11a6d8;
+}
