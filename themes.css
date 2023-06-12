@@ -38,6 +38,8 @@
 .prompt-submit-button {
     z-index: 1; /* This z-index will put the button on top of the text field */
     position: absolute;
+    margin-top: 20px;
+    margin-left: 650px;
     clip-path: polygon(0 41%, 0 0, 100% 50%, 0 100%, 0 60%, 59% 51%); /* Envelope arrow shape created with Clip Path Maker */
     background-color: black;
     width: 30px;

@@ -1,11 +1,13 @@
 <template>
   <loading v-if="loading" data-qa="tapestry-loading" style="height: 75vh;"></loading>
   <div v-else id="app">
-    <form @submit="submitUserInput">
-      <button type="submit" class="prompt-submit-button" style="position: absolute; top: 20px; right: 430px;">
-      </button>
-      <input class="prompt-text-field" v-model="userInput" type="text" placeholder="Enter a 1-3 word prompt to generate a Tapestry" style="position: relative;"> 
-    </form>
+    <div>
+      <form @submit="submitUserInput">
+        <button type="submit" class="prompt-submit-button">
+        </button>
+        <input class="prompt-text-field" type="text" v-model="userInput">
+      </form>
+    </div>
     <tapestry-app></tapestry-app>
     <router-view></router-view>
     <node-modal></node-modal>
