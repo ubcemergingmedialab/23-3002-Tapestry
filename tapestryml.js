@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-export async function tapestryGeneration(userInput) { // Have to use export so that Vue can use this JavaScript function
+export async function tapestryGeneration(userInput) {
   let i = 0;
   let angle = 0;
   let cn_angle = 0;
@@ -8,14 +8,16 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
   let cn_splitted_text = [];
   let node_ids = [];
   let tapestryJsonData;
+  let cn_nodes_array = [];
 
   // OpenAI API Endpoint and Key
   const api_endpoint = 'https://api.openai.com/v1/chat/completions';
-  const api_key = 'Bearer API-KEY';
+  const api_key = 'Bearer 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';
 
-  // Tapestry API Endpoint
+  // Tapestry API Endpoint - Node Generation
   const node_generating_api_endpoint = "http://localhost/wordpress/wp-json/tapestry-tool/v1/tapestries/5/nodes";
-
+  // Tapestry API Endpoint - Link Generation 
+  const link_generating_api_endpoint = "http://localhost/wordpress/wp-json/tapestry-tool/v1/tapestries/5/links";
   // Tapestry API Endpoint
   const tapestry_api_endpoint = "http://localhost/wordpress/wp-json/tapestry-tool/v1/tapestries/5";
 
@@ -39,7 +41,8 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
   // This is for the node positioning
   const increments = splitted_text.length;
 
-  const response_tapestry = await axios.get(tapestry_api_endpoint, { verify: false });
+  let response_tapestry = await Promise.resolve()
+        .then(() => axios.get(tapestry_api_endpoint, { verify: false }));
   const json_data = response_tapestry.data;
   const parent_id_filler = 4;
 
@@ -47,7 +50,7 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
   const x_root_node_position = json_data.nodes[parent_id_filler].coordinates.x;
   const y_root_node_position = json_data.nodes[parent_id_filler].coordinates.y;
 
-  console.log("Javascript Part 1 of Code Ran with Input:", userInput); // Right click > Inspect > Console to see progress 
+  console.log("Javascript Part 1 of Code Ran with Input:", userInput);
 
   // Tapestry API - Generating nodes with text
   async function generateNodes() {
@@ -89,16 +92,15 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
         console.log(data);
       } else {
         console.log('Error:', response_tapestry_nodes.status);
-        console.log(await response_tapestry_nodes.text());
       }
 
       // Get the ids of all the child nodes that were generated
-      let response_tapestry = await axios.get(tapestry_api_endpoint);
+      let response_tapestry = await Promise.resolve().then(() => axios.get(tapestry_api_endpoint, { verify: false }));
       if (response_tapestry.status === 200) {
         tapestryJsonData = response_tapestry.data; // Convert the response to JSON
         node_ids = Object.values(tapestryJsonData.nodes).map((node) => node.id);
         node_ids.splice(node_ids.indexOf(request_body.parentId), 1);
-        console.log("Javascript Part 2 of Code Ran (generating child nodes)"); // Check statement
+        console.log("Javascript Part 2 of Code Ran (generating child nodes)"); // Check statements
         console.log(node_ids);
       } else {
         console.log('Error:', response_tapestry.status);
@@ -122,7 +124,7 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
       ];
 
       // cn means child node
-      let cn_response_openai = await axios.post(api_endpoint, { messages: child_node_message, model: 'gpt-3.5-turbo' }, { headers: cn_headers });
+      let cn_response_openai = await Promise.resolve().then(() => axios.post(api_endpoint, { messages: child_node_message, model: 'gpt-3.5-turbo' }, { headers: cn_headers }));
       let cn_openai_json = cn_response_openai.data;
       let cn_new_text_content = cn_openai_json.choices[0].message.content;
 
@@ -132,7 +134,7 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
 
         // Position coordinates for child nodes (to make grandchildren off of)
         let x_child_node_position = tapestryJsonData.nodes[node_id].coordinates.x; // Should be the same as the Python code: x_child_node_position = json_data['nodes'][f'{node_id}']['coordinates']['x']
-        let y_child_node_position = tapestryJsonData.nodes[node_id].coordinates.y; // Self reference: y_child_node_position = json_data['nodes'][f'{node_id}']['coordinates']['y']
+        let y_child_node_position = tapestryJsonData.nodes[node_id].coordinates.y; // Reference for myself: y_child_node_position = json_data['nodes'][f'{node_id}']['coordinates']['y']
 
         let cn_radius = 320;
         let cn_angle_increments = (2 * Math.PI) / (cn_splitted_text.length + 1); // Added one to account for the child node taking up space
@@ -142,6 +144,7 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
         cn_angle += cn_angle_increments;
 
         let cn_node = {
+          id: node_id,
           title: cn_text,
           status: 'publish',
           // Sets the x y coordinates of the node on the screen (if you don't specify, x: 3000 and y: 3000 are default)
@@ -151,6 +154,9 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
           },
         };
 
+        // PUT THE CN NODES IN AN ARRAY HERE SO THAT WE CAN COMPARE THE TEXTS INSIDE OF THEM AND ADD LINKS !!!
+        cn_nodes_array.push(cn_node);
+
         let cn_request_body = {
           node: cn_node,
           parentId: node_id,
@@ -158,14 +164,13 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
 
         let cn_json_node_data = JSON.stringify(cn_request_body);
 
-        let cn_response_tapestry_nodes = await axios.post(node_generating_api_endpoint, cn_json_node_data, { headers });
+        let cn_response_tapestry_nodes = await Promise.resolve().then(() => axios.post(node_generating_api_endpoint, cn_json_node_data, { headers }));
 
         if (cn_response_tapestry_nodes.status === 200) {
           let cn_data = cn_response_tapestry_nodes.data;
           console.log(cn_data);
         } else {
           console.log('Error:', cn_response_tapestry_nodes.status);
-          console.log(await cn_response_tapestry_nodes.text());
         }
       }
 
@@ -177,4 +182,42 @@ export async function tapestryGeneration(userInput) { // Have to use export so t
   await generateNodes();
 
   console.log('Done');
+  console.log(cn_nodes_array); // Just to check and see what information is put in the array - CORRECT
+  console.log(cn_nodes_array[0].title); // Check what this returns - CORRECT
+
+  // Generating links between sibling nodes - commented out for now
+
+  // Compare each element in a list to each other (only once)
+  // for (let i=0; i < cn_nodes_array.length; i++) {
+  //   for (let j= i + 1; j < cn_nodes_array.length; j++) {
+  //     const compareA = cn_nodes_array[i].title; // You just want to compare the text inside this node array (not all the other node data)
+  //     const compareB = cn_nodes_array[j].title;
+
+  //     // Add code to call ChatGPT to assign a number between the two texts (based on how related they are)
+
+
+  //     // Extract the ChatGPT response from the JSON and convert it into a number using JavaScript Number() function
+      
+
+  //     //If the number is above a certain threshold, add a link between the nodes by calling the Tapestry link API
+  //     if (correlation >= threshold) { // Remember to set the threshold to a number later !!!
+  //       let link_request_body = {
+  //         source: cn_nodes_array[i].id,
+  //         target: cn_nodes_array[j].id,
+  //       }
+
+  //       let json_link_data = JSON.stringify(link_request_body);
+
+  //       let response_tapestry_links = await axios.post(link_generating_api_endpoint, json_link_data);
+
+  //       if (response_tapestry_links.status === 200) {
+  //         let link_data = response_tapestry_links.data;
+  //         console.log(link_data);
+  //       } else {
+  //         console.log('Error:', response_tapestry_links.status);
+  //         console.log(await response_tapestry_links.text());
+  //       }
+  //     }
+  //   }
+  // }
 }
