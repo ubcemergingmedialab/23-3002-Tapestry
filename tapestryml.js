@@ -178,7 +178,7 @@ export async function tapestryGeneration(userInput) {
     }
   }
 
-  // Call the function to generate nodes
+  // Call the function to generate nodes 
   await generateNodes();
 
   console.log('Done');
