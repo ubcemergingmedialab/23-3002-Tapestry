@@ -85,13 +85,17 @@ export async function tapestryGeneration(userInput) {
         'Content-Type': 'application/json',
       };
 
-      let response_tapestry_nodes = await axios.post(node_generating_api_endpoint, json_node_data, { headers });
+      try {
+        let response_tapestry_nodes = await axios.post(node_generating_api_endpoint, json_node_data, { headers });
 
-      if (response_tapestry_nodes.status === 200) {
-        let data = response_tapestry_nodes.data;
-        console.log(data);
-      } else {
-        console.log('Error:', response_tapestry_nodes.status);
+        if (response_tapestry_nodes.status === 200) {
+          let data = response_tapestry_nodes.data;
+          console.log(data);
+        } else {
+          console.log('Error:', response_tapestry_nodes.status);
+        }
+      }catch(error) {
+        continue;
       }
 
       // Get the ids of all the child nodes that were generated
@@ -164,14 +168,19 @@ export async function tapestryGeneration(userInput) {
 
         let cn_json_node_data = JSON.stringify(cn_request_body);
 
-        let cn_response_tapestry_nodes = await Promise.resolve().then(() => axios.post(node_generating_api_endpoint, cn_json_node_data, { headers }));
+        try {
+          let cn_response_tapestry_nodes = await Promise.resolve().then(() => axios.post(node_generating_api_endpoint, cn_json_node_data, { headers }));
 
-        if (cn_response_tapestry_nodes.status === 200) {
-          let cn_data = cn_response_tapestry_nodes.data;
-          console.log(cn_data);
-        } else {
-          console.log('Error:', cn_response_tapestry_nodes.status);
+          if (cn_response_tapestry_nodes.status === 200) {
+            let cn_data = cn_response_tapestry_nodes.data;
+            console.log(cn_data);
+          } else {
+            console.log('Error:', cn_response_tapestry_nodes.status);
+          }
+        }catch(error) {
+          continue;
         }
+
       }
 
       i++;
