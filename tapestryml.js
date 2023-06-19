@@ -95,7 +95,7 @@ export async function tapestryGeneration(userInput) {
           console.log('Error:', response_tapestry_nodes.status);
         }
       }catch(error) {
-        continue;
+        continue
       }
 
       // Get the ids of all the child nodes that were generated
@@ -114,7 +114,7 @@ export async function tapestryGeneration(userInput) {
     // Child Node Generating
     for (let node_id of node_ids) {
       let cn_headers = {
-        Authorization: api_key,
+        'Authorization': api_key,
         'Content-Type': 'application/json',
       };
 
@@ -148,7 +148,7 @@ export async function tapestryGeneration(userInput) {
         cn_angle += cn_angle_increments;
 
         let cn_node = {
-          id: node_id,
+          id: 0,
           title: cn_text,
           status: 'publish',
           // Sets the x y coordinates of the node on the screen (if you don't specify, x: 3000 and y: 3000 are default)
@@ -190,43 +190,74 @@ export async function tapestryGeneration(userInput) {
   // Call the function to generate nodes 
   await generateNodes();
 
+  // Get the ids of all the grandchild nodes that were generated
+  let gc_response_tapestry = await Promise.resolve().then(() => axios.get(tapestry_api_endpoint, { verify: false }));
+  if (gc_response_tapestry.status === 200) {
+    gc_tapestryJsonData = gc_response_tapestry.data; // Convert the response to JSON
+    gc_node_ids = Object.values(gc_tapestryJsonData.nodes).map((node) => node.id);
+    gc_node_ids.splice(gc_node_ids.indexOf(request_body.parentId), 1); // Get rid of root node ID here
+    gc_node_ids = gc_node_ids.filter((id) => !node_ids.includes(id)); // Get rid of all child node and root node IDs here
+    console.log("Javascript Part 3 of Code Ran (generating grandchild nodes)"); // Check statement
+    console.log(gc_node_ids);
+  } else {
+    console.log('Error:', gc_response_tapestry.status);
+  }
+  // Code ends here for getting gc node ids
+
+  // Adding the gc node ID to each cn_node in cn_nodes_array in the "id" field
+  for (let i = 0; i < cn_nodes_array.length; i++) {
+    cn_nodes_array[i].id = gc_node_ids.shift();
+  }
+
   console.log('Done');
-  console.log(cn_nodes_array); // Just to check and see what information is put in the array - CORRECT
-  console.log(cn_nodes_array[0].title); // Check what this returns - CORRECT
+  //console.log(cn_nodes_array); // Just to check and see what information is put in the array - CORRECT
+  //console.log(cn_nodes_array[0].title); // Check what this returns - CORRECT
 
   // Generating links between sibling nodes - commented out for now
 
   // Compare each element in a list to each other (only once)
-  // for (let i=0; i < cn_nodes_array.length; i++) {
-  //   for (let j= i + 1; j < cn_nodes_array.length; j++) {
-  //     const compareA = cn_nodes_array[i].title; // You just want to compare the text inside this node array (not all the other node data)
-  //     const compareB = cn_nodes_array[j].title;
+  for (let i=0; i < cn_nodes_array.length; i++) {
+    for (let j= i + 1; j < cn_nodes_array.length; j++) {
+      const compareA = cn_nodes_array[i].title; // You just want to compare the text inside this node array (not all the other node data)
+      const compareB = cn_nodes_array[j].title;
 
-  //     // Add code to call ChatGPT to assign a number between the two texts (based on how related they are)
-
-
-  //     // Extract the ChatGPT response from the JSON and convert it into a number using JavaScript Number() function
+    // Add code to call ChatGPT to assign a number between the two texts (based on how related they are)
+    const comparison = [
+      // Content field contains a prompt engineered text that tells OpenAI to compare the two texts in the nodes
+      { "role": "user", "content": `Given two texts, please assign a single number between 1 to 10 that describes how closely related they are in terms of topic. 1 would be unrelated and 10 would be very closely related. Do not include any other text other than a single number between 1-10 that describes the two texts' relationship. Here are the two texts: ${compareA} and ${compareB}`},
+    ];
+  
+    const headers = {
+      'Authorization': api_key,
+      'Content-Type': 'application/json',
+    };
+  
+    const compare_response_openai = await axios.post(api_endpoint, { messages: comparison, model: "gpt-3.5-turbo" }, { headers });
+    const compare_openai_json = compare_response_openai.data;
+    const compare_string_val_openai = compare_openai_json.choices[0].message.content;
+    // Extract the ChatGPT response from the JSON and convert it into a number using JavaScript Number() function
+    const compare_num_val_openai = Number(compare_string_val_openai);
       
 
-  //     //If the number is above a certain threshold, add a link between the nodes by calling the Tapestry link API
-  //     if (correlation >= threshold) { // Remember to set the threshold to a number later !!!
-  //       let link_request_body = {
-  //         source: cn_nodes_array[i].id,
-  //         target: cn_nodes_array[j].id,
-  //       }
+      //If the number is above a certain threshold, add a link between the nodes by calling the Tapestry link API
+      if (compare_num_val_openai >= 4) { // threshold value is set to 4 here !!!
+        let link_request_body = {
+          source: cn_nodes_array[i].id,
+          target: cn_nodes_array[j].id,
+        }
 
-  //       let json_link_data = JSON.stringify(link_request_body);
+        let json_link_data = JSON.stringify(link_request_body);
 
-  //       let response_tapestry_links = await axios.post(link_generating_api_endpoint, json_link_data);
+        let response_tapestry_links = await axios.post(link_generating_api_endpoint, json_link_data);
 
-  //       if (response_tapestry_links.status === 200) {
-  //         let link_data = response_tapestry_links.data;
-  //         console.log(link_data);
-  //       } else {
-  //         console.log('Error:', response_tapestry_links.status);
-  //         console.log(await response_tapestry_links.text());
-  //       }
-  //     }
-  //   }
-  // }
+        if (response_tapestry_links.status === 200) {
+          let link_data = response_tapestry_links.data;
+          console.log(link_data);
+        } else {
+          console.log('Error:', response_tapestry_links.status);
+          console.log(await response_tapestry_links.text());
+        }
+      }
+    }
+  }
 }
