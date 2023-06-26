@@ -80,6 +80,7 @@ export async function tapestryGeneration(userInput) {
           x: x,
           y: y,
         },
+        level: 1,
       };
 
       let request_body = {
@@ -167,6 +168,7 @@ export async function tapestryGeneration(userInput) {
             x: x_cn,
             y: y_cn,
           },
+          level: 2,
         };
 
         // PUT THE CN NODES IN AN ARRAY HERE SO THAT WE CAN COMPARE THE TEXTS INSIDE OF THEM AND ADD LINKS !!!
