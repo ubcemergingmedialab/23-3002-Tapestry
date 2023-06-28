@@ -13,7 +13,7 @@
     --bg-color-secondary: #ddd;
     --bg-color-layered: #00000008;
     --text-color-primary: #111;
-    --text-color-secondary: #262626;
+    --text-color-secondary: #262626; /* Original: #262626 */
     --text-color-tertiary: #5f747f;
     --button-color: #222;
 }
@@ -29,7 +29,7 @@
     padding: 20px;
     background-color: white;
     border: none;
-    height: 70px;
+    height: 160px;
     width: 700px;
     border-radius: 15px;
     /* box-shadow: 400px 100px 7px black; /* Horizontal and vertical, shadow blur, shadow color*/
@@ -49,4 +49,13 @@
 .prompt-submit-button:hover {
     transition: 0.3s;
     background-color: #11a6d8;
+}
+
+.delete-submit-button {
+    height: 75px;
+    width: 200px;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    font-size: 20px;
 }

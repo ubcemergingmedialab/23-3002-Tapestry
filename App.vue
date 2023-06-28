@@ -5,7 +5,14 @@
       <form @submit="submitUserInput">
         <button type="submit" class="prompt-submit-button">
         </button>
-        <input class="prompt-text-field" type="text" v-model="userInput">
+        <textarea class="prompt-text-field" v-model="userInput" rows="5" cols="40" placeholder="Enter a text prompt to generate a Tapestry. Do not use the ~ character in your text."></textarea>
+      </form>
+    </div>
+    <div>
+      <form @submit="deleteEntireTapestry">
+        <button type="submit" class="delete-submit-button"> 
+          Delete Tapestry
+        </button>
       </form>
     </div>
     <tapestry-app></tapestry-app>
@@ -45,6 +52,7 @@ import { isLoggedIn } from "./services/wp"
 import axios from 'axios'
 import "@/assets/styles/themes.css"
 import { tapestryGeneration } from "./tapestryml" // JavaScript function
+import { deleteNodes } from "./deletenodes"
 
 export default {
   name: "app",
@@ -166,6 +174,11 @@ export default {
     submitUserInput() {
       console.log('Submitting user input:', this.userInput);
       tapestryGeneration(this.userInput) // This is calling the JavaScript function
+    },
+
+    deleteEntireTapestry() {
+      console.log('Deleting Entire Tapestry...');
+      deleteNodes(this.userInput2)
     },
   },
 }
