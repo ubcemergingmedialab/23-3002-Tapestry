@@ -14,7 +14,7 @@ Brief Description of project here
 - [Name of asset and link if applicable](https://www.google.com)
 
 ## Versioning
-- Currently working on Tapestry 3.0 
+- Currently working on Tapestry 2.0 
 
 ## Getting Started
 
