@@ -50,4 +50,4 @@ Dr. Steven Barnes, Associate Professor of Teaching, Department of Psychology
 
 ## Documentation
 - [Project Wiki Link Here](https://wiki.ubc.ca/Documentation:23-3002_Tapestry_Tool_ML)
-- [Link to other forms of doc here](https://www.google.com)
+- [Link to other forms of doc here]()
