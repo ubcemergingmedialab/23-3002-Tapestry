@@ -18,15 +18,20 @@ Brief Description of project here
 
 ## Getting Started
 
-1. TBD Instructions for use here
+1. API Keys:
+2. Tapestry ID and link replacements:
 
 ## Building
 
-1. Included steps here to build project
-2. ex: Clone project to local folder
+1. Download the Tapestry Tool 2.0 Wordpress Plugin and follow the installation instructions: https://github.com/tapestry-tool/tapestry-wp 
+2. Download this project to a local folder and replace the Tapestry Tool code files with their respective files from this repository.
+3. Open up a command prompt or terminal window and run the following:
+   ``` npm run build
+   npm start ```
+   Log into Wordpress and open th
 
 ## Dependencies
-- List any dependencies here
+- Tapestry Tool 2.0 Wordpress Plugin: https://github.com/tapestry-tool/tapestry-wp\
 
 ## Contributing (Optional) 
 
