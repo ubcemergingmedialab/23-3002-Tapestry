@@ -42,8 +42,8 @@ Dr. Steven Barnes, Associate Professor of Teaching, Department of Psychology
 
 - Victoria Lim -  Lead and UI/UX Designer
 - Sophia Yang - Developer
-- Jung Yi Cau - Designer
-- Grace Bell - Volunteer 
+- Grace Bell - Volunteer
+- Jung Yi Cau - Volunteer 
 
 ## Troubleshooting
 - List any common 'gotcha's with the project here
