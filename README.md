@@ -29,11 +29,10 @@ Brief Description of project here
 2. Download this Tapestry ML project to a local folder and replace the Tapestry Tool code files downloaded previously with their respective files from this repository.
   - Make sure to make the necessary edits to the code outlined in the "Getting Started" section, including editing endpoint links and API keys to fit your tapestry page.
 4. Open up a command prompt or terminal window and run the following:
-   ```
+   ```shell
    npm run build
-   ```
    npm start
-   ```
+
    Log into Wordpress and open a tapestry page linked to the code. 
 
 ## Dependencies
