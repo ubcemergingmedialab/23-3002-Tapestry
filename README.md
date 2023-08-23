@@ -51,4 +51,4 @@ Dr. Steven Barnes, Professor of Teaching and Director, Undergraduate Program in 
 Grace Bell - Volunteer 
 
 ## Documentation
-- [Project Wiki Link Here](https://wiki.ubc.ca/Documentation:23-3002_Tapestry_Tool_ML)
+- [Project Wiki Link](https://wiki.ubc.ca/Documentation:23-3002_Tapestry_Tool_ML)
