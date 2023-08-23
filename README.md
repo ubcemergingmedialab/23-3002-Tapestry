@@ -45,7 +45,7 @@ Log into WordPress and open a tapestry page linked to the code.
 ## Team
 
 ### Faculty:
-Dr. Steven Barnes, Associate Professor of Teaching, Department of Psychology
+Dr. Steven Barnes, Professor of Teaching and Director, Undergraduate Program in Neuroscience, University of British Columbia
 
 ### Current EML Student Team:
 
