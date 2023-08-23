@@ -31,6 +31,8 @@ Brief Description of project here
 4. Open up a command prompt or terminal window and run the following:
    ```
    npm run build
+```
+```
    npm start
    ```
    Log into Wordpress and open a tapestry page linked to the code. 
