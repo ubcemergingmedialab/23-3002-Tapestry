@@ -25,15 +25,14 @@ Brief Description of project here
 
 ## Building
 
-1. Download the Tapestry Tool 2.0 Wordpress Plugin and follow the installation instructions found here: https://github.com/tapestry-tool/tapestry-wp 
+1. Download the Tapestry Tool 2.0 WordPress Plugin and follow the installation instructions found here: https://github.com/tapestry-tool/tapestry-wp 
 2. Download this Tapestry ML project to a local folder and replace the Tapestry Tool code files downloaded previously with their respective files from this repository.
-  - Make sure to make the necessary edits to the code outlined in the "Getting Started" section, including editing endpoint links and API keys to fit your tapestry page.
+   - Make sure to make the necessary edits to the code outlined in the "Getting Started" section, including editing endpoint links and API keys to fit your tapestry page.
 4. Open up a command prompt or terminal window and run the following:
    ```shell
    npm run build
    npm start
-
-   Log into Wordpress and open a tapestry page linked to the code. 
+Log into WordPress and open a tapestry page linked to the code.
 
 ## Dependencies
 - Tapestry Tool 2.0 Wordpress Plugin: https://github.com/tapestry-tool/tapestry-wp\
