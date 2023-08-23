@@ -1,0 +1,49 @@
+<template>
+  <g
+    :transform="`translate(${x}, ${y})`"
+    :data-qa="dataQa"
+    :aria-disabled="disabled"
+    @click.stop="$emit('click')"
+  >
+    <circle
+      ref="addButton"
+      r="27"
+      :fill="fill"
+      stroke="white"
+      stroke-width="3"
+    ></circle>
+    <slot></slot>
+  </g>
+</template>
+
+<script>
+export default {
+  props: {
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    dataQa: {
+      type: String,
+      required: false,
+      default: "node-button",
+    },
+    x: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    y: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    fill: {
+      type: String,
+      required: false,
+      default: "#666",
+    },
+  },
+}
+</script>
