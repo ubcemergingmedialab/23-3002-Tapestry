@@ -2,7 +2,7 @@ import requests
 import json
 
 #Use this to get all the node IDS - REMEMBER TO REMOVE THE PARENT ID
-tapestry_api_endpoint = "http://localhost/wordpress/wp-json/tapestry-tool/v1/tapestries/5"
+tapestry_api_endpoint = "https://tapestry.emlx.ca/wp/wp-json/tapestry-tool/v1/tapestries/24"
 
 response_tapestry = requests.get(tapestry_api_endpoint, verify=False)
 
@@ -12,9 +12,9 @@ if response_tapestry.status_code == 200:
 else:
     print('Error:', response_tapestry.status_code)
 
-parent_id = 4
+# parent_id = 4
 node_ids = list(node['id'] for node in json_data['nodes'].values())
-node_ids.remove(parent_id) 
+# node_ids.remove(parent_id) 
 
 print(node_ids)
 
@@ -23,7 +23,7 @@ print(node_ids)
 node_ids_delete = node_ids
 
 for node_id_delete in node_ids_delete:
-    node_deletion = f"http://localhost/wordpress/wp-json/tapestry-tool/v1/tapestries/5/nodes/{node_id_delete}"
+    node_deletion = f"https://tapestry.emlx.ca/wp/wp-json/tapestry-tool/v1/tapestries/24/nodes/3589"
 
     # Pass the array of node IDs in the request body
     delete = requests.delete(node_deletion, json=node_id_delete)
