@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "id": 2244,
+      "author": {
+        "id": "1",
+        "name": "admin"
+      },
+      "type": "tapestry_node",
+      "size": "",
+      "title": "Root",
+      "status": "publish",
+      "imageURL": "",
+      "lockedImageURL": "",
+      "mediaType": "text",
+      "mediaFormat": "",
+      "mediaDuration": 0,
+      "description": "qwerty",
+      "behaviour": "embed",
+      "typeData": {
+        "linkMetadata": null,
+        "progress": [
+          {
+            "group": "viewed",
+            "value": 0,
+            "extra": {
+              "nodeType": "root",
+              "unlocked": true
+            }
+          },
+          {
+            "group": "unviewed",
+            "value": 1,
+            "extra": {
+              "nodeType": "root",
+              "unlocked": true
+            }
+          }
+        ],
+        "mediaURL": "",
+        "mediaWidth": 960,
+        "mediaHeight": 600,
+        "textContent": "qwe"
+      },
+      "coordinates": {
+        "x": 2939.49951171875,
+        "y": 3116.346923828125
+      },
+      "permissions": {
+        "public": [
+          "read"
+        ],
+        "authenticated": [
+          "read"
+        ],
+        "contributor": [
+          "read"
+        ],
+        "subscriber": [
+          "read"
+        ]
+      },
+      "hideTitle": false,
+      "hideProgress": false,
+      "hideMedia": false,
+      "backgroundColor": "#8396a1",
+      "textColor": "white",
+      "skippable": true,
+      "fullscreen": false,
+      "conditions": [],
+      "childOrdering": [],
+      "fitWindow": true,
+      "fx": 2939.49951171875,
+      "fy": 3116.346923828125,
+      "completed": false,
+      "accordionProgress": [],
+      "mayUnlockNodes": [],
+      "permissionsOrder": [
+        "public",
+        "authenticated",
+        "contributor",
+        "subscriber"
+      ],
+      "index": 0,
+      "x": 2939.49951171875,
+      "y": 3116.346923828125,
+      "vy": 0,
+      "vx": 0,
+      "nodeType": "root",
+      "unlocked": true,
+      "depth": 0,
+      "accessible": true,
+      "license": {
+        "name": "CC-BY-SA",
+        "icons": [
+          "fab fa-creative-commons",
+          "fab fa-creative-commons-by",
+          "fab fa-creative-commons-sa"
+        ],
+        "type": "cc",
+        "link": "",
+        "description": ""
+      }
+    }
+  ],
+  "links": [],
+  "groups": [],
+  "site-url": "http://localhost:8000"
+}

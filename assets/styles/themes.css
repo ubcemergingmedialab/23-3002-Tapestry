@@ -1,0 +1,107 @@
+[data-theme="dark"] {
+    --bg-color-primary: #262626;
+    --bg-color-secondary: #444;
+    --bg-color-layered: #ffffff08;
+    --text-color-primary: #eee;
+    --text-color-secondary: #ccc;
+    --text-color-tertiary: #a9a9a9;
+    --button-color: #ddd;
+}
+
+[data-theme="light"] {
+    --bg-color-primary: #eee;
+    --bg-color-secondary: #ddd;
+    --bg-color-layered: #00000008;
+    --text-color-primary: #111;
+    --text-color-secondary: #262626; /* Original: #262626 */
+    --text-color-tertiary: #5f747f;
+    --button-color: #222;
+}
+
+[data-theme] {
+    --highlight-color: #11a6d8;
+}
+
+/* This is for styling the field where users will input text */
+.prompt-container {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, 0%);
+}
+
+.prompt-text-field {
+    z-index: 0;
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border: none;
+    height: 160px;
+    width: 700px;
+    border-radius: 15px;
+    top: 20px;
+}
+
+.prompt-submit-button {
+    z-index: 1; /* This z-index will put the button on top of the text field */
+    position: absolute;
+    margin-top: 18px;
+    margin-left: 640px;
+    background-color: black;
+    clip-path: polygon(0 41%, 0 0, 100% 50%, 0 100%, 0 60%, 59% 51%); /* Envelope arrow shape created with Clip Path Maker */
+    width: 40px;
+    height: 40px;
+    border: #949292;
+    border-radius: 10px;
+    top: 20px;
+}
+
+.prompt-submit-button:hover {
+    transition: 0.3s;
+    background-color: #11a6d8;
+}
+
+.delete-submit-button {
+    height: 75px;
+    width: 300px;
+    background-color: #11a6d8;
+    border: #11a6d8;
+    color: white;
+    border-radius: 15px;
+    font-size: 23px;
+    font-weight: 600;
+    top: 250px;
+}
+
+.delete-submit-button:hover {
+    height: 75px;
+    width: 300px;
+    background-color: white;
+    border: white;
+    color: #11a6d8;
+    border-radius: 15px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.dropzone {
+    height: 270px;
+    width: 750px;
+    border: 2px dashed white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #77AEBF;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.dropzone.dragging {
+    background-color: white; 
+    color: #11a6d8
+}
