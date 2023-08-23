@@ -32,7 +32,6 @@ Brief Description of project here
    ```
    npm run build
 ```
-```
    npm start
    ```
    Log into Wordpress and open a tapestry page linked to the code. 
