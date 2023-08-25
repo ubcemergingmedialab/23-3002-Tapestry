@@ -52,3 +52,5 @@ Grace Bell - Volunteer
 
 ## Documentation
 - [Project Wiki Link](https://wiki.ubc.ca/Documentation:23-3002_Tapestry_Tool_ML)
+
+Note that our license covers the EML components, and NOT those of OpenAI. 
