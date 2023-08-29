@@ -23,7 +23,7 @@ Our goal with Tapestry ML is to use machine learning to automatically generate a
 
 ## Building
 1. Download the Tapestry Tool 2.0 WordPress Plugin and follow the installation instructions found here: https://github.com/tapestry-tool/tapestry-wp 
-2. Download this Tapestry ML project to a local folder and replace the Tapestry Tool code files downloaded previously with their respective files from this repository.
+2. Download this Tapestry ML project to a local folder and replace the Tapestry Tool src folder with the file from this repository (tapestry-wp > templates > vue > src).
    - Make sure to make the necessary edits to the code outlined in the "Getting Started" section, including editing endpoint links and API keys to fit your tapestry page.
 4. Open up a command prompt or terminal window and run the following:
    ```shell
