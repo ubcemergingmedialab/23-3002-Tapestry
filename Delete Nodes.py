@@ -1,8 +1,11 @@
 import requests
 import json
 
-#Use this to get all the node IDS - REMEMBER TO REMOVE THE PARENT ID
-tapestry_api_endpoint = "https://tapestry.emlx.ca/wp/wp-json/tapestry-tool/v1/tapestries/24"
+# Run this script to delete all nodes in the specified tapestry (if delete nodes button doesn't work)
+# Note: Remember to replace the tapestry_id variable with your tapestry id
+
+tapestry_id = 0 
+tapestry_api_endpoint = f"https://tapestry.emlx.ca/wp/wp-json/tapestry-tool/v1/tapestries/{tapestry_id}"
 
 response_tapestry = requests.get(tapestry_api_endpoint, verify=False)
 
@@ -12,20 +15,13 @@ if response_tapestry.status_code == 200:
 else:
     print('Error:', response_tapestry.status_code)
 
-# parent_id = 4
 node_ids = list(node['id'] for node in json_data['nodes'].values())
-# node_ids.remove(parent_id) 
 
-print(node_ids)
-
-# USE THIS CODE TO DELETE THEM. REMEMBER TO REPLACE THE "NODE_IDS_DELETE" FIELD WITH A COPY-PASTE OF THE
-# ARRAY OF NODE IDS THAT WERE PRINTED FROM THE ABOVE STEP (REMEMBER THAT THE NODE IDS NEED TO BE NUMBERS NOT STRINGS)
 node_ids_delete = node_ids
 
 for node_id_delete in node_ids_delete:
-    node_deletion = f"https://tapestry.emlx.ca/wp/wp-json/tapestry-tool/v1/tapestries/24/nodes/3589"
+    node_deletion = f"https://tapestry.emlx.ca/wp/wp-json/tapestry-tool/v1/tapestries/{tapestry_id}/nodes"
 
-    # Pass the array of node IDs in the request body
     delete = requests.delete(node_deletion, json=node_id_delete)
 
     if delete.status_code == 200:
