@@ -38,6 +38,7 @@ Log into WordPress and open a tapestry page linked to the code.
 - If running tapestry on localhost, you must run "npm start" in a command prompt/terminal and have MAMP open. Ensure both the Apache and MySQL servers are running.
 - If you are having trouble deleting a Tapestry due to the error "Node MetaId Invalid", go into MAMP > Open WebStart Page > Tools > PHPMyAdmin > tapestry > wp_posts (contains nodes and tapestry objects) or wp_postmeta (contains information on the content and relation between nodes and tapestries). The error message indicates that a node from wp_posts was unable to find its corresponding metacontent stored in wp_postmeta. This may be resolved by adding a new entry with the missing ID.
 - If there is a glitch when you submit your first prompt using the "Write a Prompt" feature, simply delete the root node and try again.
+- In order to use the "Upload a PDF" feature, make sure to run the 'pdf_extractor.py' file. This will initiate the Flask app, enabling it to run and actively monitor the designated ports.
 
 ## Team
 ### Faculty:
