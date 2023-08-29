@@ -15,17 +15,16 @@ Our goal with Tapestry ML is to use machine learning to automatically generate a
 ## Versioning
 - Currently working on Tapestry 2.0 
 
-## Getting Started
-1. OpenAI API Key:
-   - You can get a key for free by creating an account on the OpenAI website and generating your own secret key. Replace the string in the relevant places in the code (Ctrl+F "OPEN-AI-API-KEY" in tapestryml.js and LOtapestryml.js).
-3. Tapestry ID and endpoint link replacements:
-   - Log in to Wordpress and create a new tapestry page (ensure the Tapestry Tool 2.0 Wordpress Plugin: https://github.com/tapestry-tool/tapestry-wp has been downloaded and the relevant code files from this repository has been replaced first). Then right click and select "Inspect", then "Network". Refresh the page and look for the only item in the "Name" list with a single number. Enter that value in the tapestry_id variable (replace 5) and save the file.
-
 ## Building
+First, ensure that you are familiar with and have installed Git and Github and Visual Studio Code (the code editor we use), as well as Node.js and Vue Language Features plugin. No specific versioning of Visual Studio Code is required.
 1. Download the Tapestry Tool 2.0 WordPress Plugin and follow the installation instructions found here: https://github.com/tapestry-tool/tapestry-wp 
 2. Download this Tapestry ML project to a local folder and replace the Tapestry Tool src folder with the file from this repository (tapestry-wp > templates > vue > src).
-   - Make sure to make the necessary edits to the code outlined in the "Getting Started" section, including editing endpoint links and API keys to fit your tapestry page.
-4. Open up a command prompt or terminal window and run the following:
+   - Make sure to make the following edits to the code:
+      2 a) OpenAI API Key:
+      - You can get a key for free by creating an account on the OpenAI website and generating your own secret key. Replace the string in the relevant places in the code (Ctrl+F "OPEN-AI-API-KEY" in tapestryml.js and LOtapestryml.js).
+      2 b) Tapestry ID and endpoint link replacements:
+         - Log in to Wordpress and create a new tapestry page (ensure the Tapestry Tool 2.0 Wordpress Plugin: https://github.com/tapestry-tool/tapestry-wp has been downloaded and the relevant code files from this repository has been replaced first). Then right click and select "Inspect", then "Network". Refresh the page and look for the only item in the "Name" list with a single number. Enter that value in the tapestry_id variable (replace 5) and save the file.
+3. Open up a command prompt or terminal window and run the following:
    ```shell
    npm run build
    npm start
@@ -33,6 +32,7 @@ Log into WordPress and open a tapestry page linked to the code.
 
 ## Dependencies
 - Tapestry Tool 2.0 Wordpress Plugin: https://github.com/tapestry-tool/tapestry-wp\
+- Vue Language Features (Volar) Plugin (v1.8.8): https://marketplace.visualstudio.com/items?itemName=Vue.volar
 
 ## Troubleshooting
 - If running tapestry on localhost, you must run "npm start" in a command prompt/terminal and have MAMP open. Ensure both the Apache and MySQL servers are running.
