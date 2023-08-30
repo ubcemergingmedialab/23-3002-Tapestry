@@ -18,7 +18,7 @@ Our goal with Tapestry ML is to use machine learning to automatically generate a
 ## Building
 First, ensure that you are familiar with and have installed Git and Github and Visual Studio Code (the code editor we use), as well as Node.js and Vue Language Features plugin. No specific versioning of Visual Studio Code is required.
 1. Download the Tapestry Tool 2.0 WordPress Plugin and follow the installation instructions found here: https://github.com/tapestry-tool/tapestry-wp 
-2. Download this Tapestry ML project to a local folder and replace the Tapestry Tool src folder with the file from this repository (tapestry-wp > templates > vue > src).
+2. Download this Tapestry ML project to a local folder and replace the Tapestry Tool src folder with the file from this repository (tapestry-wp > templates > vue > src). For the most updated version of the project, ensure that you are in the main branch.
    - Make sure to make the following edits to the code (Ctrl+F "USER-EDITS" in the tapestryml.js and LOtapestryml.js files to see all places that require changes):
       - OpenAI API Key: You can get a key for free by creating an account on the OpenAI website and generating your own secret key. Replace the string in the relevant places in the code.
       - Tapestry ID and endpoint link replacements: Log in to Wordpress and create a new tapestry page (ensure the Tapestry Tool 2.0 Wordpress Plugin: https://github.com/tapestry-tool/tapestry-wp has been downloaded and src file has been replaced with the code from this repository first). Then right click and select "Inspect", then "Network". Refresh the page and look for the only item in the "Name" list with a single number. Enter that value in the tapestry_id variable and save the file.
